@@ -1,4 +1,4 @@
-FROM maven:3.8.5-openjdk-14 AS build
+FROM maven:3.9.3-openjdk-14 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
