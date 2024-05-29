@@ -1,8 +1,8 @@
-FROM maven:3.9.3-openjdk-14 AS build
+FROM maven:3.8.5-openjdk-17 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM openjdk:14-slim
+FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/examserver-0.0.1-SNAPSHOT.jar examserver.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","examserver.jar"]
